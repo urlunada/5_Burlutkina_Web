@@ -252,10 +252,6 @@ p {
   .reason-item {
     padding: 15px 15px 15px 40px;
   }
-  .reason-item::before {
-    left: 5px;
-    font-size: 1rem;
-  }
 }
 
 @keyframes shake {
