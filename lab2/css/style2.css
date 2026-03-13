@@ -124,15 +124,14 @@ p {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  list-style: decimal;
-  padding-left: 40px;
+  padding-left: 20px;
   margin: 20px 0;
 }
 
 .reason-item {
   background: #ffe6e6;
-  padding: 15px;
   border-left: 5px solid red;
+  position: relative;
 }
 
 .reviews-section {
@@ -146,13 +145,6 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
-}
-
-.review-item {
-  background: white;
-  padding: 10px;
-  border: 1px solid #ccc;
-  font-style: italic;
 }
 
 .slogans-section {
@@ -222,12 +214,6 @@ p {
 
 @media (max-width: 900px) {
   .main-grid {
-    grid-template-columns: 1fr 2fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .main-grid {
     grid-template-columns: 1fr;
   }
 
@@ -240,11 +226,34 @@ p {
   }
 }
 
+@media (min-width: 768px) {
+  .reasons-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .reason-item {
+    flex: 1 1 40%;
+    padding: 15px 15px 15px 50px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 400px) {
   .logo-img {
     max-width: 100px;
   }
   .slogans-section {
+    font-size: 1rem;
+  }
+  .reason-item {
+    padding: 15px 15px 15px 40px;
+  }
+  .reason-item::before {
+    left: 5px;
     font-size: 1rem;
   }
 }
@@ -295,4 +304,20 @@ p {
   100% {
     transform: scale(1);
   }
+}
+
+blockquote.review-item {
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-style: italic;
+  margin: 0;
+}
+
+cite.otziv-author {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #067d18;
+  font-style: normal;
 }
