@@ -2,7 +2,7 @@
  * @file cookie.js
  * @description Модуль для работы с cookie и localStorage
  * @version 1.0
- * @author Студент
+ * @author Бурлуткина ДГ КС-20
  *
  * @functions
  * setCookie(name, value, days) - установить cookie
