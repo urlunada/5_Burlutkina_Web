@@ -31,7 +31,7 @@ function setCookie(name, value, days) {
       name + "=" + encodeURIComponent(value) + expires + "; path=/";
     return true;
   } catch (e) {
-    console.error("❌ setCookie ошибка:", e);
+    console.error("setCookie ошибка:", e);
     return false;
   }
 }
@@ -53,7 +53,7 @@ function getCookie(name) {
     }
     return null;
   } catch (e) {
-    console.error("❌ getCookie ошибка:", e);
+    console.error("getCookie ошибка:", e);
     return null;
   }
 }
@@ -78,7 +78,7 @@ function setStorage(name, value) {
     localStorage.setItem("lab4_" + name, value);
     return true;
   } catch (e) {
-    console.error("❌ localStorage ошибка:", e);
+    console.error("localStorage ошибка:", e);
     return false;
   }
 }
@@ -93,7 +93,7 @@ function getStorage(name) {
   try {
     return localStorage.getItem("lab4_" + name);
   } catch (e) {
-    console.error("❌ localStorage ошибка:", e);
+    console.error("localStorage ошибка:", e);
     return null;
   }
 }
