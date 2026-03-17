@@ -187,27 +187,48 @@ function endGame(score, total, quitEarly) {
   message += `Процент: ${Math.round((score / total) * 100)}%\n\n`;
 
   const percentage = (score / total) * 100;
-  let messages = [];
-  let title = "";
+  const possibleResults = [
+    {
+      predicate: () => percentage === 100,
+      title: "ИДЕАЛЬНО!",
+      messages: funnyMessages.perfect,
+    },
+    {
+      predicate: () => percentage >= 85,
+      title: "ОТЛИЧНО!",
+      messages: funnyMessages.excellent,
+    },
+    {
+      predicate: () => percentage >= 70,
+      title: "ХОРОШО!",
+      messages: funnyMessages.good,
+    },
+    {
+      predicate: () => percentage >= 50,
+      title: "+- ГУД",
+      messages: funnyMessages.average,
+    },
+    {
+      predicate: () => percentage >= 30,
+      title: "ПЛОХОВАТО",
+      messages: funnyMessages.bad,
+    },
+    {
+      predicate: () => percentage < 30,
+      title: "ИДИ ЧИТАЙ",
+      messages: funnyMessages.disaster,
+    },
+  ];
 
-  if (percentage === 100) {
-    title = "ИДЕАЛЬНО!";
-    messages = funnyMessages.perfect;
-  } else if (percentage >= 85) {
-    title = "ОТЛИЧНО!";
-    messages = funnyMessages.excellent;
-  } else if (percentage >= 70) {
-    title = "ХОРОШО!";
-    messages = funnyMessages.good;
-  } else if (percentage >= 50) {
-    title = "+- ГУД";
-    messages = funnyMessages.average;
-  } else if (percentage >= 30) {
-    title = "ПЛОХОВАТО";
-    messages = funnyMessages.bad;
-  } else {
-    title = "ИДИ ЧИТАЙ";
-    messages = funnyMessages.disaster;
+  let title = "";
+  let messages = [];
+
+  for (const result of possibleResults) {
+    if (result.predicate()) {
+      title = result.title;
+      messages = result.messages;
+      break;
+    }
   }
 
   message += `${title}\n\n`;
@@ -221,7 +242,6 @@ function endGame(score, total, quitEarly) {
   alert(message);
 
   const playAgain = confirm("🎮 Хотите сыграть ещё раз?");
-
   if (playAgain) {
     alert("Запускаем повторно, удачки ✨");
     startGame();
