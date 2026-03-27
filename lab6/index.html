@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Dashboard | Управление данными</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#posts">Посты</a></li>
+          <li><a href="#users">Пользователи</a></li>
+          <li><a href="#comments">Комментарии</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="posts" class="api-section">
+        <h2>Посты</h2>
+        <p class="api-description">
+          Полноценное управление контентом: создание, редактирование и
+          публикация материалов
+        </p>
+
+        <section class="controls">
+          <button id="getPosts" class="btn btn-get">Получить посты</button>
+          <button id="createPost" class="btn btn-post">Создать пост</button>
+          <button id="updatePost" class="btn btn-put">Обновить пост</button>
+          <button id="patchPost" class="btn btn-patch">
+            Обновить частично
+          </button>
+          <button id="deletePost" class="btn btn-delete">Удалить пост</button>
+        </section>
+
+        <section id="postForm" class="form-section hidden">
+          <h3 id="postFormTitle">Управление постом</h3>
+          <form id="postFormElement">
+            <div class="form-group">
+              <label for="postTitle">Заголовок</label>
+              <input
+                type="text"
+                id="postTitle"
+                name="title"
+                required
+                placeholder="Введите заголовок"
+              />
+            </div>
+            <div class="form-group">
+              <label for="postBody">Содержимое</label>
+              <textarea
+                id="postBody"
+                name="body"
+                required
+                placeholder="Введите текст поста"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="postUserId">ID пользователя</label>
+              <input
+                type="number"
+                id="postUserId"
+                name="userId"
+                value="1"
+                min="1"
+                max="10"
+              />
+            </div>
+            <div class="form-group">
+              <label for="postId">ID поста</label>
+              <input
+                type="number"
+                id="postId"
+                name="id"
+                placeholder="Обязательно для обновления/удаления"
+              />
+            </div>
+            <button type="submit" class="btn btn-submit" id="postSubmitBtn">
+              Отправить
+            </button>
+            <button
+              type="button"
+              class="btn btn-cancel hidden"
+              id="postCancelBtn"
+            >
+              Отмена
+            </button>
+          </form>
+        </section>
+
+        <section id="postsResult" class="result-section">
+          <div class="loader hidden">Загрузка...</div>
+          <div class="error-message hidden"></div>
+          <div class="success-message hidden"></div>
+          <article class="data-container"></article>
+        </section>
+      </section>
+
+      <section id="users" class="api-section">
+        <h2>Пользователи</h2>
+        <p class="api-description">
+          Каталог пользователей с подробной информацией и контактами
+        </p>
+
+        <section class="controls">
+          <button id="getUsers" class="btn btn-get">
+            Получить пользователей
+          </button>
+        </section>
+
+        <section id="usersResult" class="result-section">
+          <div class="loader hidden">Загрузка...</div>
+          <div class="error-message hidden"></div>
+          <div class="success-message hidden"></div>
+          <article class="data-container"></article>
+        </section>
+      </section>
+
+      <section id="comments" class="api-section">
+        <h2>Комментарии</h2>
+        <p class="api-description">
+          Модерация отзывов: просмотр и управление комментариями
+        </p>
+
+        <section class="controls">
+          <button id="getComments" class="btn btn-get">
+            Получить комментарии
+          </button>
+          <button id="deleteComment" class="btn btn-delete">
+            Удалить комментарий
+          </button>
+        </section>
+
+        <section id="commentForm" class="form-section hidden">
+          <h3>Удалить комментарий</h3>
+          <form id="commentFormElement">
+            <div class="form-group">
+              <label for="commentId">ID комментария</label>
+              <input
+                type="number"
+                id="commentId"
+                name="id"
+                value="1"
+                min="1"
+                max="500"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-submit">Удалить</button>
+            <button type="button" class="btn btn-cancel" id="commentCancelBtn">
+              Отмена
+            </button>
+          </form>
+        </section>
+
+        <section id="commentsResult" class="result-section">
+          <div class="loader hidden">Загрузка...</div>
+          <div class="error-message hidden"></div>
+          <div class="success-message hidden"></div>
+          <article class="data-container"></article>
+        </section>
+      </section>
+
+      <section class="promise-demo">
+        <h3>⚡ Быстрая загрузка всех данных</h3>
+        <button id="loadAll" class="btn btn-primary">Загрузить всё</button>
+        <section id="promiseResult" class="result-section">
+          <div class="loader hidden">Загрузка...</div>
+          <article class="data-container"></article>
+        </section>
+      </section>
+
+      <aside class="info-panel">
+        <h3>📚 Информация об API</h3>
+        <section>
+          <h4>JSONPlaceholder</h4>
+          <q>Бесплатный тестовый REST API для прототипирования</q>
+          <p>Поддерживает все HTTP методы: GET, POST, PUT, PATCH, DELETE</p>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <p>© 2♡26 API Dashboard</p>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
