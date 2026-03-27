@@ -389,6 +389,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initCommentsSection();
   initPromiseAllDemo();
 
-  console.log("🚀 Лабораторная работа №6 инициализирована");
-  console.log("📡 Используемые API:", API_ENDPOINTS);
+  console.log("🚀 Лабораторная работа №6 doneee");
+  console.log("📡 Используемые API:", API_ENDPOINTS, FALLBACK_ENDPOINTS);
 });
