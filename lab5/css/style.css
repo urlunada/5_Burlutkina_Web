@@ -195,10 +195,6 @@ body {
   margin-bottom: 15px;
 }
 
-.edit-form-title {
-  margin-bottom: 15px;
-}
-
 .edit-form-title.attack {
   color: #ff6b6b;
 }
@@ -579,7 +575,52 @@ body {
   }
 
   .card-image {
-    height: 360px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    min-height: 200px;
+    background: linear-gradient(145deg, #2a2a4a, #1f1f3a);
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+  }
+
+  .card-image img.image-error {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  .card-image img.image-loaded {
+    opacity: 1;
+  }
+
+  .card-image-default {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    background: linear-gradient(145deg, #2a2a4a, #1f1f3a);
+    color: #666;
+    font-size: 4rem;
+  }
+
+  @keyframes imageErrorPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(233, 69, 96, 0);
+    }
+    50% {
+      box-shadow: 0 0 20px 5px rgba(233, 69, 96, 0.3);
+    }
+  }
+
+  .card-image.image-error {
+    animation: imageErrorPulse 2s infinite;
+    border: 2px solid #e94560;
   }
 
   .modal-content {
