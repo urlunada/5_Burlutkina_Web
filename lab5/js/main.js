@@ -1,4 +1,4 @@
-let cards = [];
+const cards = [];
 let isEditMode = false;
 let nextId = 1;
 let editingCardId = null;
@@ -26,40 +26,40 @@ function renderPage() {
     modalDiv.id = "addCardModal";
     modalDiv.className = "modal-overlay";
     modalDiv.innerHTML = `
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>➕ Добавить новую карту</h2>
-                    <button class="modal-close" type="button" id="modalCloseBtn">✕</button>
-                </div>
-                <form id="addCardForm" class="modal-form">
-                    <div class="form-group">
-                        <label for="newCardName">Название карты</label>
-                        <input type="text" id="newCardName" placeholder="Введите название" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="newCardType">Тип карты</label>
-                        <select id="newCardType" required>
-                            <option value="" disabled selected>Выберите тип</option>
-                            <option value="attack">⚔️ Атака</option>
-                            <option value="defense">🛡️ Защита</option>
-                            <option value="special">✨ Специальная</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="newCardDesc">Описание</label>
-                        <textarea id="newCardDesc" placeholder="Введите описание" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="newCardImage">Изображение (путь к файлу)</label>
-                        <input type="text" id="newCardImage" placeholder="images/картинка.png" value="images/new-card.png" />
-                    </div>
-                    <div class="modal-buttons">
-                        <button type="submit" class="btn-save">💾 Создать</button>
-                        <button type="button" class="btn-cancel" id="modalCancelBtn">✖️ Отмена</button>
-                    </div>
-                </form>
-            </div>
-        `;
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>➕ Добавить новую карту</h2>
+          <button class="modal-close" type="button" id="modalCloseBtn">✕</button>
+        </div>
+        <form id="addCardForm" class="modal-form">
+          <div class="form-group">
+            <label for="newCardName">Название карты</label>
+            <input type="text" id="newCardName" placeholder="Введите название" required />
+          </div>
+          <div class="form-group">
+            <label for="newCardType">Тип карты</label>
+            <select id="newCardType" required>
+              <option value="" disabled selected>Выберите тип</option>
+              <option value="attack">⚔️ Атака</option>
+              <option value="defense">🛡️ Защита</option>
+              <option value="special">✨ Специальная</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="newCardDesc">Описание</label>
+            <textarea id="newCardDesc" placeholder="Введите описание" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="newCardImage">Изображение(путь к файлу)</label>
+            <input type="text" id="newCardImage" placeholder="images/картинка.png" value="images/new-card.png" />
+          </div>
+          <div class="modal-buttons">
+            <button type="submit" class="btn-save">💾 Создать</button>
+            <button type="button" class="btn-cancel" id="modalCancelBtn">✖️ Отмена</button>
+          </div>
+        </form>
+      </div>
+    `;
 
     document.body.appendChild(headerElement);
     document.body.appendChild(mainElement);

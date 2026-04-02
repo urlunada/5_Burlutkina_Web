@@ -42,10 +42,32 @@ class Card {
     this.#rarity = value;
   }
 
+  isValidImageUrl(url) {
+    if (!url || typeof url !== "string") {
+      return false;
+    }
+    const validExtensions = [".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg"];
+    const hasValidExtension = validExtensions.some((ext) =>
+      url.toLowerCase().includes(ext),
+    );
+    return hasValidExtension || url.startsWith("data:image/");
+  }
+
+  getSafeImageUrl() {
+    if (this.isValidImageUrl(this.#imageSrc)) {
+      return this.#imageSrc;
+    }
+    return "images/default-card(муд_сейчас🤍✨).png";
+  }
+
   toHTML(isEditMode = false, isEditing = false) {
+    const safeImageSrc = this.getSafeImageUrl();
     return `
       <article class="card ${this.constructor.name.toLowerCase()} ${isEditing ? "editing" : ""}" data-id="${this.#id}" id="card-${this.#id}">
-        <img src="${this.#imageSrc}" alt="${this.#name}" class="card-image">
+        <img src="${safeImageSrc}" alt="${this.#name}" class="card-image"
+        onerror="this.onerror=null; this.src='images/default-card(муд_сейчас🤍✨).png'; this.classList.add('image-error');"
+        onload="this.classList.add('image-loaded');"
+        >
         <div class="card-content">
           <div class="card-header">
             <h3 class="card-title view-only">${this.#name}</h3>
